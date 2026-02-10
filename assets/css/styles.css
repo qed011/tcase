@@ -29,7 +29,7 @@
   --color-white: #FFFFFF;
 
   /* Tipografia */
-  --font-heading: 'Georgia', 'Times New Roman', serif;
+  --font-heading: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
   /* Espaçamento */
@@ -288,7 +288,7 @@ ul, ol {
   justify-content: center;
   text-align: center;
   padding: calc(var(--header-height) + 3rem) 1.5rem 4rem;
-  background: linear-gradient(160deg, var(--color-primary) 0%, #264E63 50%, #1a3a4a 100%);
+  background: url('https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
   color: var(--color-white);
   overflow: hidden;
 }
@@ -297,8 +297,7 @@ ul, ol {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><rect fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1" width="60" height="60"/></svg>');
-  opacity: 0.5;
+  background: rgba(27, 58, 75, 0.78);
 }
 
 .hero__content {
@@ -388,6 +387,7 @@ ul, ol {
 .about__text p {
   margin-bottom: 1rem;
   color: var(--color-text);
+  text-align: center;
 }
 
 .about__text p:last-child {
@@ -427,9 +427,15 @@ ul, ol {
 }
 
 .card__icon {
-  font-size: 2rem;
   margin-bottom: 1rem;
   color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+}
+
+.card__icon svg {
+  width: 48px;
+  height: 48px;
 }
 
 .card__title {
@@ -544,6 +550,7 @@ ul, ol {
   color: var(--color-text-light);
   line-height: 1.7;
   font-size: 0.98rem;
+  text-align: center;
 }
 
 /* ============================================
