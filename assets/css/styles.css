@@ -842,32 +842,15 @@ ul, ol {
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - var(--header-height) - 160px);
-  padding: 3rem 1rem;
+  padding: 3rem 1.5rem;
   padding-top: calc(var(--header-height) + 3rem);
   background: var(--color-bg-alt);
 }
 
-.thankyou__card {
-  background: var(--color-white);
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  max-width: 780px;
+.thankyou .container {
+  max-width: 720px;
   width: 100%;
-  margin: 0 auto;
-  padding: 3rem 3rem;
   text-align: center;
-}
-
-@media (max-width: 767px) {
-  .thankyou {
-    padding: 1.5rem 0.75rem;
-    padding-top: calc(var(--header-height) + 1.5rem);
-  }
-  .thankyou__card {
-    max-width: 100%;
-    padding: 2rem 1.5rem;
-    border-radius: 10px;
-  }
 }
 
 .thankyou__icon {
@@ -880,7 +863,7 @@ ul, ol {
   height: 64px;
 }
 
-.thankyou__card h1 {
+.thankyou h1 {
   font-family: var(--font-heading);
   font-size: 2rem;
   color: var(--color-primary);
