@@ -867,29 +867,30 @@ ul, ol {
   font-family: var(--font-heading);
   font-size: 1.75rem;
   color: var(--color-primary);
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.35rem;
+  white-space: nowrap;
 }
 
 .thankyou__lead {
   font-size: 1rem;
   color: var(--color-text-light);
-  margin: 0 0 1.25rem;
-  line-height: 1.5;
+  margin: 0 0 0.75rem;
+  line-height: 1.4;
 }
 
 .thankyou__steps {
   text-align: left;
   background: var(--color-bg-alt);
   border-radius: var(--radius);
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.25rem;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0.75rem;
 }
 
 .thankyou__steps h2 {
   font-family: var(--font-heading);
   font-size: 1rem;
   color: var(--color-primary);
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.35rem;
 }
 
 .thankyou__steps ol {
@@ -901,11 +902,11 @@ ul, ol {
 
 .thankyou__steps li {
   counter-increment: steps;
-  padding: 0.35rem 0;
+  padding: 0.2rem 0;
   padding-left: 2rem;
   position: relative;
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: 0.88rem;
+  line-height: 1.35;
   color: var(--color-text);
 }
 
@@ -913,7 +914,7 @@ ul, ol {
   content: counter(steps);
   position: absolute;
   left: 0;
-  top: 0.35rem;
+  top: 0.2rem;
   width: 1.35rem;
   height: 1.35rem;
   border-radius: 50%;
