@@ -150,18 +150,6 @@ function initGoogleForm() {
   var form = document.getElementById('gform');
   if (!form) return;
 
-  // Máscara simples de CPF — 000.000.000-00
-  var cpfInput = document.getElementById('gform-cpf');
-  if (cpfInput) {
-    cpfInput.addEventListener('input', function () {
-      var v = this.value.replace(/\D/g, '').slice(0, 11);
-      if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
-      else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{1,3})/, '$1.$2.$3');
-      else if (v.length > 3) v = v.replace(/(\d{3})(\d{1,3})/, '$1.$2');
-      this.value = v;
-    });
-  }
-
   // Máscara simples de telefone — (00) 00000-0000
   var telInput = document.getElementById('gform-tel');
   if (telInput) {
@@ -169,17 +157,6 @@ function initGoogleForm() {
       var v = this.value.replace(/\D/g, '').slice(0, 11);
       if (v.length > 6) v = v.replace(/(\d{2})(\d{5})(\d{1,4})/, '($1) $2-$3');
       else if (v.length > 2) v = v.replace(/(\d{2})(\d{1,5})/, '($1) $2');
-      this.value = v;
-    });
-  }
-
-  // Máscara de data de nascimento — dd/mm/aaaa
-  var dobInput = document.getElementById('gform-dob');
-  if (dobInput) {
-    dobInput.addEventListener('input', function () {
-      var v = this.value.replace(/\D/g, '').slice(0, 8);
-      if (v.length > 4) v = v.replace(/(\d{2})(\d{2})(\d{1,4})/, '$1/$2/$3');
-      else if (v.length > 2) v = v.replace(/(\d{2})(\d{1,2})/, '$1/$2');
       this.value = v;
     });
   }
@@ -196,7 +173,7 @@ function initGoogleForm() {
       el.classList.remove('gform__input--error');
     });
 
-    // Basic validation
+    // Basic validation (only nome + tel are required)
     var valid = true;
     var requiredInputs = form.querySelectorAll('[required]');
     requiredInputs.forEach(function (input) {
@@ -205,19 +182,9 @@ function initGoogleForm() {
         valid = false;
       }
     });
-    // Checkbox validation (at least one required)
-    var checkboxFieldset = document.getElementById('gform-checkboxes');
-    var checkboxes = form.querySelectorAll('[name="entry.1343350674"]');
-    var anyChecked = Array.prototype.some.call(checkboxes, function (cb) { return cb.checked; });
-    if (!anyChecked) {
-      checkboxFieldset.classList.add('gform__fieldset--error');
-      valid = false;
-    } else {
-      checkboxFieldset.classList.remove('gform__fieldset--error');
-    }
 
     if (!valid) {
-      var firstError = form.querySelector('.gform__input--error, .gform__fieldset--error');
+      var firstError = form.querySelector('.gform__input--error');
       if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
@@ -226,34 +193,21 @@ function initGoogleForm() {
     if (typeof grecaptcha !== 'undefined') {
       var recaptchaResponse = grecaptcha.getResponse();
       if (!recaptchaResponse) {
-        alert('Por favor, confirme que voc\u00ea n\u00e3o \u00e9 um rob\u00f4.');
+        alert('Por favor, confirme que você não é um robô.');
         return;
       }
     }
 
-    // Split date of birth into hidden fields (dd/mm/aaaa)
-    var dobInput = document.getElementById('gform-dob');
-    if (dobInput && dobInput.value) {
-      var parts = dobInput.value.split('/'); // DD/MM/YYYY
-      document.getElementById('dob-day').value   = parts[0];
-      document.getElementById('dob-month').value = parts[1];
-      document.getElementById('dob-year').value  = parts[2];
-    }
-
-    // Build FormData (exclude honeypot + date UI input)
+    // Build FormData (exclude honeypot)
     var formData = new FormData(form);
     formData.delete('website');
 
-    // Remove the visible date input (not a Google Forms field)
-    // It has no name attribute, so it won't be in FormData.
-
     // Show loading state
     var submitBtn = document.getElementById('gform-submit');
-    var originalText = submitBtn.textContent;
     submitBtn.textContent = 'Enviando…';
     submitBtn.classList.add('btn--loading');
 
-    // Submit via fetch (no-cors — we won't get a response body)
+    // Submit via fetch (no-cors)
     var GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdwkSeelic6cnqWV9F5713VxSaah0yCPDiJEglo-QAYr0C4kg/formResponse';
 
     fetch(GOOGLE_FORM_URL, {
@@ -262,14 +216,106 @@ function initGoogleForm() {
       body: formData,
     })
     .then(function () {
-      // no-cors always resolves — redirect to thank-you
       window.location.href = 'thank-you.html';
     })
     .catch(function () {
-      // Fallback: still redirect (data was likely sent)
       window.location.href = 'thank-you.html';
     });
   });
+}
+
+/* ============================================
+   SOCIAL PROOF — Animação do contador
+   ============================================ */
+
+function initSocialProofCounter() {
+  var numberEl = document.querySelector('.social-proof__number');
+  var progressEl = document.querySelector('.social-proof__progress');
+  if (!numberEl) return;
+
+  var target = parseInt(numberEl.getAttribute('data-target'), 10) || 0;
+  var progress = progressEl ? parseInt(progressEl.getAttribute('data-progress'), 10) || 0 : 0;
+  var animated = false;
+
+  function animateCounter() {
+    if (animated) return;
+    animated = true;
+
+    var duration = 2000;
+    var start = performance.now();
+
+    function tick(now) {
+      var elapsed = now - start;
+      var ratio = Math.min(elapsed / duration, 1);
+      // ease-out
+      var eased = 1 - Math.pow(1 - ratio, 3);
+      var current = Math.round(eased * target);
+      numberEl.textContent = current.toLocaleString('pt-BR');
+
+      if (ratio < 1) {
+        requestAnimationFrame(tick);
+      }
+    }
+
+    requestAnimationFrame(tick);
+
+    // Animate progress bar
+    if (progressEl) {
+      setTimeout(function () {
+        progressEl.style.width = progress + '%';
+      }, 100);
+    }
+  }
+
+  // Use IntersectionObserver to trigger on scroll
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCounter();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(numberEl);
+  } else {
+    animateCounter();
+  }
+}
+
+/* ============================================
+   FLOATING CTA BAR (MOBILE)
+   ============================================ */
+
+function initFloatingCTA() {
+  var bar = document.getElementById('floating-cta');
+  if (!bar) return;
+
+  var contactSection = document.getElementById('contato');
+
+  function checkVisibility() {
+    var scrollY = window.scrollY || window.pageYOffset;
+
+    // Show after scrolling past hero
+    if (scrollY < 400) {
+      bar.classList.remove('floating-cta--visible');
+      return;
+    }
+
+    // Hide when form section is in view
+    if (contactSection) {
+      var rect = contactSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        bar.classList.remove('floating-cta--visible');
+        return;
+      }
+    }
+
+    bar.classList.add('floating-cta--visible');
+  }
+
+  window.addEventListener('scroll', checkVisibility, { passive: true });
+  checkVisibility();
 }
 
 /* ============================================
@@ -284,4 +330,6 @@ document.addEventListener('DOMContentLoaded', function () {
   initFloatingWhatsApp();
   setCurrentYear();
   initGoogleForm();
+  initSocialProofCounter();
+  initFloatingCTA();
 });
