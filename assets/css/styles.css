@@ -854,8 +854,7 @@ ul, ol {
 }
 
 .thankyou__icon {
-  color: var(--color-accent);
-  margin-bottom: 1.5rem;
+  display: none;
 }
 
 .thankyou__icon svg {
