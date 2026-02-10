@@ -386,23 +386,26 @@ ul, ol {
   margin-inline: auto;
 }
 
-.hero__benefit {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(37, 211, 102, 0.18);
-  border: 1px solid rgba(37, 211, 102, 0.4);
-  color: var(--color-white);
-  font-size: clamp(0.85rem, 2vw, 1rem);
-  font-weight: 600;
-  padding: 0.6rem 1.4rem;
-  border-radius: 999px;
+.hero__benefit-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
   margin-bottom: 1.75rem;
 }
 
-.hero__benefit svg {
+.hero__benefit-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: clamp(0.88rem, 2vw, 1rem);
+  font-weight: 600;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.hero__benefit-item svg {
   flex-shrink: 0;
-  stroke: var(--color-accent);
 }
 
 .hero__ctas {
@@ -1349,9 +1352,10 @@ ul, ol {
     margin-bottom: 1.25rem;
   }
 
-  .hero__benefit {
-    font-size: 0.8rem;
-    padding: 0.5rem 1rem;
+  .hero__benefit-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
     margin-bottom: 1.25rem;
   }
 
