@@ -841,9 +841,10 @@ ul, ol {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - var(--header-height) - 160px);
-  padding: 3rem 1.5rem;
-  padding-top: calc(var(--header-height) + 3rem);
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100dvh - var(--header-height));
+  padding: 1.5rem 1.5rem;
+  padding-top: calc(var(--header-height) + 1.5rem);
   background: var(--color-bg-alt);
 }
 
@@ -864,31 +865,31 @@ ul, ol {
 
 .thankyou h1 {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: var(--color-primary);
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
 }
 
 .thankyou__lead {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--color-text-light);
-  margin: 0 0 2rem;
-  line-height: 1.6;
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
 }
 
 .thankyou__steps {
   text-align: left;
   background: var(--color-bg-alt);
   border-radius: var(--radius);
-  padding: 1.5rem 1.75rem;
-  margin-bottom: 2rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
 .thankyou__steps h2 {
   font-family: var(--font-heading);
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: var(--color-primary);
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
 }
 
 .thankyou__steps ol {
@@ -900,11 +901,11 @@ ul, ol {
 
 .thankyou__steps li {
   counter-increment: steps;
-  padding: 0.5rem 0;
+  padding: 0.35rem 0;
   padding-left: 2rem;
   position: relative;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.4;
   color: var(--color-text);
 }
 
@@ -912,13 +913,13 @@ ul, ol {
   content: counter(steps);
   position: absolute;
   left: 0;
-  top: 0.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  top: 0.35rem;
+  width: 1.35rem;
+  height: 1.35rem;
   border-radius: 50%;
   background: var(--color-primary);
   color: var(--color-white);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -927,14 +928,14 @@ ul, ol {
 
 .thankyou__ctas {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .thankyou__note {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--color-text-light);
   font-style: italic;
   margin: 0;
