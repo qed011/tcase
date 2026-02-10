@@ -716,6 +716,21 @@ ul, ol {
   z-index: 999;
 }
 
+.fab-whatsapp::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.35);
+  animation: fabGlow 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes fabGlow {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.25); opacity: 0; }
+}
+
 .fab-whatsapp:hover {
   background-color: var(--color-accent-hover);
   color: var(--color-white);
@@ -926,23 +941,26 @@ ul, ol {
 
 .social-proof__stat {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .social-proof__number {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-size: clamp(2.5rem, 7vw, 3.5rem);
   font-weight: 800;
-  color: var(--color-accent);
+  color: #4ADE80;
   line-height: 1;
+  text-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
 }
 
 .social-proof__label {
-  font-size: 1.05rem;
-  opacity: 0.9;
+  font-size: 1.1rem;
+  opacity: 0.92;
+  font-weight: 500;
 }
 
 .social-proof__bar {
@@ -1308,24 +1326,52 @@ ul, ol {
     margin: 0.5rem 0;
   }
 
-  /* Floating CTA bar — show on mobile */
+  /* WhatsApp FAB — only icon on mobile, no floating bar */
   .floating-cta {
-    display: flex;
+    display: none !important;
   }
 
-  /* Add bottom padding for floating bar */
-  body {
-    padding-bottom: 72px;
+  /* Footer — compact horizontal strip */
+  .footer {
+    padding: 1rem 1rem;
   }
 
-  /* Hide fab-whatsapp on mobile when floating CTA is visible */
-  .fab-whatsapp {
-    bottom: 5.5rem;
-  }
-
-  /* Footer */
   .footer .container {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 0.75rem;
+    font-size: 0.78rem;
+  }
+
+  .footer__brand {
+    font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.15rem;
+  }
+
+  .footer__sep {
+    display: none;
+  }
+
+  .footer__link {
+    font-size: 0.75rem;
+  }
+
+  .footer__social a {
+    width: 28px;
+    height: 28px;
+  }
+
+  .footer__bottom {
+    font-size: 0.68rem;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .footer__disclaimer {
+    font-size: 0.6rem;
   }
 
   .gform__row--2,
