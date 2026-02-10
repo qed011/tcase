@@ -1,0 +1,1108 @@
+/* ============================================
+   CSS — Justiça para Santa Cruz
+   Landing page estática · GitHub Pages
+   ============================================ */
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Paleta principal */
+  --color-primary: #1B3A4B;       /* azul escuro institucional */
+  --color-primary-dark: #122936;
+  --color-accent: #25D366;        /* verde WhatsApp */
+  --color-accent-hover: #1EBE57;
+  --color-instagram: #E1306C;
+  --color-instagram-hover: #C1255A;
+  --color-text: #2D2D2D;
+  --color-text-light: #555555;
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F5F7FA;
+  --color-bg-dark: #1B3A4B;
+  --color-border: #E0E4E8;
+  --color-white: #FFFFFF;
+
+  /* Tipografia */
+  --font-heading: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Espaçamento */
+  --section-padding: 5rem 1.5rem;
+  --container-max: 1100px;
+  --header-height: 72px;
+  --radius: 6px;
+  --transition: 0.25s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-primary-dark);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ---------- Utilitários ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: center;
+  transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  line-height: 1.4;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.btn--whatsapp {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn--whatsapp:hover {
+  background-color: var(--color-accent-hover);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+}
+
+.btn--instagram {
+  background-color: var(--color-instagram);
+  color: var(--color-white);
+}
+
+.btn--instagram:hover {
+  background-color: var(--color-instagram-hover);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(225, 48, 108, 0.3);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 2px solid var(--color-white);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(27, 58, 75, 0.35);
+}
+
+/* ---------- SVG inline icons ---------- */
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  vertical-align: middle;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--color-white);
+  z-index: 1000;
+  transition: box-shadow var(--transition);
+}
+
+.header--scrolled {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.header__logo {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.header__logo:hover {
+  color: var(--color-primary-dark);
+}
+
+/* Navegação */
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav__link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text);
+  padding: 0.25rem 0;
+  position: relative;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width var(--transition);
+}
+
+.nav__link:hover::after,
+.nav__link:focus-visible::after {
+  width: 100%;
+}
+
+.nav__link:hover {
+  color: var(--color-primary);
+}
+
+/* Hamburger */
+.nav__toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.nav__toggle--active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav__toggle--active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__toggle--active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: calc(var(--header-height) + 3rem) 1.5rem 4rem;
+  background: linear-gradient(160deg, var(--color-primary) 0%, #264E63 50%, #1a3a4a 100%);
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><rect fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1" width="60" height="60"/></svg>');
+  opacity: 0.5;
+}
+
+.hero__content {
+  position: relative;
+  max-width: 800px;
+  z-index: 1;
+}
+
+.hero__badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.hero__subtitle {
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  line-height: 1.65;
+  opacity: 0.92;
+  margin-bottom: 2.5rem;
+  max-width: 650px;
+  margin-inline: auto;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* ============================================
+   SEÇÕES GENÉRICAS
+   ============================================ */
+.section {
+  padding: var(--section-padding);
+}
+
+.section--alt {
+  background-color: var(--color-bg-alt);
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.section__lead {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+/* ============================================
+   SOBRE O CASO
+   ============================================ */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+.about__text p {
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.about__text p:last-child {
+  margin-bottom: 0;
+}
+
+.about__highlight {
+  background-color: var(--color-bg-alt);
+  border-left: 4px solid var(--color-primary);
+  padding: 1.5rem 2rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 1.05rem;
+  color: var(--color-primary-dark);
+  font-weight: 500;
+}
+
+/* ============================================
+   CONTEXTO JURÍDICO — CARDS
+   ============================================ */
+.context__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
+.card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  transform: translateY(-3px);
+}
+
+.card__icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.card__title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.card__text {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 1.65;
+}
+
+/* ---------- Lista de elegibilidade ---------- */
+.eligibility__list {
+  max-width: 750px;
+  margin: 2rem auto 0;
+}
+
+.eligibility__list li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.85rem;
+  line-height: 1.6;
+}
+
+.eligibility__list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* ============================================
+   CTA INTERMEDIÁRIO
+   ============================================ */
+.cta-banner {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #264E63 100%);
+  color: var(--color-white);
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+}
+
+.cta-banner__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  margin-bottom: 0.75rem;
+}
+
+.cta-banner__text {
+  font-size: 1.05rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.cta-banner .btn {
+  font-size: 1.1rem;
+  padding: 1rem 2.5rem;
+}
+
+/* ============================================
+   FAQ — ACCORDION
+   ============================================ */
+.faq__list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 1.25rem 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  list-style: none;
+  user-select: none;
+  gap: 1rem;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__item summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--color-primary);
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+
+.faq__item[open] summary::after {
+  content: '−';
+}
+
+.faq__answer {
+  padding: 0 0 1.5rem;
+  color: var(--color-text-light);
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+/* ============================================
+   CONTATO
+   ============================================ */
+.contact__wrapper {
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact__text {
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+  color: var(--color-text-light);
+  line-height: 1.7;
+}
+
+.contact__channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.contact__email {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+}
+
+.contact__email a {
+  font-weight: 600;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background-color: var(--color-bg-dark);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 1.5rem 1.5rem;
+  font-size: 0.85rem;
+}
+
+.footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  text-align: center;
+}
+
+.footer__brand {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.footer__sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.footer__link {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  transition: color var(--transition);
+}
+
+.footer__link:hover {
+  color: var(--color-white);
+}
+
+.footer__social {
+  display: inline-flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.footer__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  transition: background-color var(--transition);
+}
+
+.footer__social a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.footer__disclaimer {
+  display: block;
+  margin-bottom: 0.35rem;
+  opacity: 0.55;
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+/* ============================================
+   BOTÃO FLUTUANTE WHATSAPP
+   ============================================ */
+.fab-whatsapp {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  transition: opacity var(--transition), visibility var(--transition), transform var(--transition), background-color var(--transition);
+  z-index: 999;
+}
+
+.fab-whatsapp:hover {
+  background-color: var(--color-accent-hover);
+  color: var(--color-white);
+  transform: scale(1.08);
+}
+
+.fab--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.fab-whatsapp .icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* ============================================
+   PÁGINAS INTERNAS (privacy / thank-you)
+   ============================================ */
+.page-content {
+  padding: calc(var(--header-height) + 3rem) 1.5rem 4rem;
+  min-height: 80vh;
+}
+
+.page-content h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.page-content h2 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  margin: 2rem 0 0.75rem;
+}
+
+.page-content p,
+.page-content li {
+  color: var(--color-text);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
+.page-content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.page-content a {
+  text-decoration: underline;
+}
+
+/* ============================================
+   THANK-YOU
+   ============================================ */
+.thankyou {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--header-height) - 160px);
+  padding: 3rem 1.5rem;
+  padding-top: calc(var(--header-height) + 3rem);
+  background: var(--color-bg-alt);
+}
+
+.thankyou__card {
+  background: var(--color-white);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem;
+  text-align: center;
+}
+
+.thankyou__icon {
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+}
+
+.thankyou__icon svg {
+  width: 64px;
+  height: 64px;
+}
+
+.thankyou__card h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+}
+
+.thankyou__lead {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  margin: 0 0 2rem;
+  line-height: 1.6;
+}
+
+.thankyou__steps {
+  text-align: left;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.thankyou__steps h2 {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+}
+
+.thankyou__steps ol {
+  list-style: none;
+  counter-reset: steps;
+  padding: 0;
+  margin: 0;
+}
+
+.thankyou__steps li {
+  counter-increment: steps;
+  padding: 0.5rem 0;
+  padding-left: 2rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.thankyou__steps li::before {
+  content: counter(steps);
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thankyou__ctas {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.thankyou__note {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  font-style: italic;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+/* Tablet */
+@media (min-width: 768px) {
+  .about__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer .container {
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: start;
+  }
+}
+/* Mobile */
+@media (max-width: 767px) {
+  :root {
+    --section-padding: 3.5rem 1rem;
+    --header-height: 64px;
+  }
+
+  /* Header mobile */
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__list {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background-color: var(--color-white);
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .nav__list--open {
+    max-height: 400px;
+    padding: 1rem 0;
+  }
+
+  .nav__link {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  /* Hero mobile */
+  .hero {
+    min-height: 75vh;
+    padding-top: calc(var(--header-height) + 2rem);
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__ctas .btn {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* Cards */
+  .context__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer .container {
+    flex-direction: column;
+  }
+
+  .gform__row--2,
+  .gform__row--3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ============================================
+   GOOGLE FORMS — FORMULÁRIO CUSTOMIZADO
+   ============================================ */
+
+.gform {
+  max-width: 720px;
+  margin: 2rem auto 0;
+}
+
+.gform__honeypot {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.gform__row {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.gform__row--2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.gform__row--3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.gform__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.gform__group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.35rem;
+}
+
+.gform__required {
+  color: #D32F2F;
+}
+
+.gform__group input {
+  padding: 0.7rem 0.85rem;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-white);
+  color: var(--color-text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.gform__group input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(27, 58, 75, 0.12);
+}
+
+.gform__group input.gform__input--error {
+  border-color: #D32F2F;
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+}
+
+/* Fieldset / Checkboxes */
+.gform__fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.25rem 1rem;
+  margin: 1.25rem 0;
+  background: var(--color-white);
+}
+
+.gform__fieldset legend {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  padding: 0 0.4rem;
+  line-height: 1.4;
+}
+
+.gform__fieldset--error {
+  border-color: #D32F2F;
+}
+
+.gform__hint {
+  font-weight: 400;
+  color: var(--color-text-light);
+  font-size: 0.8125rem;
+}
+
+.gform__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.55rem 0;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--color-text);
+}
+
+.gform__checkbox input[type="checkbox"] {
+  margin-top: 0.2rem;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* Actions */
+.gform__actions {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.gform__actions .btn {
+  min-width: 260px;
+  font-size: 1.05rem;
+}
+
+.gform__disclaimer {
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+  margin-top: 0.75rem;
+}
+
+.gform__disclaimer a {
+  color: var(--color-primary);
+}
+
+/* Spinner on submit */
+.gform__actions .btn--loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.gform__actions .btn--loading::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 0.5rem;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: gformSpin 0.6s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes gformSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Contact channels below form */
+.contact__channels {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.contact__channels a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
