@@ -13,8 +13,8 @@
   <meta property="og:type" content="website">
   <!-- <meta property="og:image" content="assets/img/og-image.jpg"> -->
 
-  <!-- Favicon placeholder -->
-  <!-- <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon"> -->
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
 
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -27,9 +27,16 @@
   <header class="header" role="banner">
     <div class="container">
       <a href="#" class="header__logo" aria-label="Justiça para Santa Cruz — Início">
-        <!-- Substituir por <img> quando houver logotipo -->
-        Justiça para Santa Cruz
+        <img src="assets/img/logo.svg" alt="Justiça para Santa Cruz" width="40" height="40">
       </a>
+
+      <a href="#contato" class="header__cta">Quero participar</a>
+
+      <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu de navegação">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
       <nav aria-label="Navegação principal">
         <ul class="nav__list" id="nav-menu" role="list">
@@ -40,14 +47,6 @@
           <li><a class="nav__link" href="privacy.html">Privacidade</a></li>
         </ul>
       </nav>
-
-      <a href="#contato" class="header__cta">Quero participar</a>
-
-      <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu de navegação">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
   </header>
 

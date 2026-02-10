@@ -193,7 +193,7 @@ function initGoogleForm() {
     if (typeof grecaptcha !== 'undefined') {
       var recaptchaResponse = grecaptcha.getResponse();
       if (!recaptchaResponse) {
-        alert('Por favor, confirme que você não é um robô.');
+        alert('Por favor, confirme que voc\u00ea n\u00e3o \u00e9 um rob\u00f4.');
         return;
       }
     }

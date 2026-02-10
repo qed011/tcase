@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Obrigado! — Justiça para Santa Cruz</title>
   <meta name="theme-color" content="#1B3A4B">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -13,8 +14,26 @@
   <header class="header" role="banner">
     <div class="container">
       <a href="index.html" class="header__logo" aria-label="Justiça para Santa Cruz — Início">
-        Justiça para Santa Cruz
+        <img src="assets/img/logo.svg" alt="Justiça para Santa Cruz" width="40" height="40">
       </a>
+
+      <a href="index.html#contato" class="header__cta">Quero participar</a>
+
+      <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu de navegação">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav aria-label="Navegação principal">
+        <ul class="nav__list" id="nav-menu" role="list">
+          <li><a class="nav__link" href="index.html#sobre">Sobre o Caso</a></li>
+          <li><a class="nav__link" href="index.html#contexto">Informações</a></li>
+          <li><a class="nav__link" href="index.html#faq">Perguntas Frequentes</a></li>
+          <li><a class="nav__link" href="index.html#contato">Contato</a></li>
+          <li><a class="nav__link" href="privacy.html">Privacidade</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
