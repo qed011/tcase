@@ -950,6 +950,7 @@ ul, ol {
 .btn--lg {
   padding: 1.1rem 2.5rem;
   font-size: 1.15rem;
+  white-space: nowrap;
 }
 
 /* ============================================
@@ -1326,8 +1327,9 @@ ul, ol {
   }
 
   .hero__title {
-    font-size: clamp(2.2rem, 9vw, 3rem);
+    font-size: clamp(1.75rem, 7.5vw, 3rem);
     margin-bottom: 1rem;
+    white-space: nowrap;
   }
 
   .hero__subtitle {
