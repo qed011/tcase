@@ -402,6 +402,7 @@ ul, ol {
   font-size: 1.05rem;
   color: var(--color-primary-dark);
   font-weight: 500;
+  text-align: center;
 }
 
 /* ============================================
@@ -418,6 +419,7 @@ ul, ol {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 2rem;
+  text-align: center;
   transition: box-shadow var(--transition), transform var(--transition);
 }
 
@@ -456,21 +458,21 @@ ul, ol {
 .eligibility__list {
   max-width: 750px;
   margin: 2rem auto 0;
+  text-align: center;
 }
 
 .eligibility__list li {
   position: relative;
-  padding-left: 1.75rem;
+  padding-left: 0;
   margin-bottom: 0.85rem;
   line-height: 1.6;
 }
 
 .eligibility__list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
+  content: '✓ ';
   color: var(--color-accent);
   font-weight: 700;
+  position: static;
 }
 
 /* ============================================

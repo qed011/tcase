@@ -222,6 +222,15 @@ function initGoogleForm() {
       return;
     }
 
+    // reCAPTCHA validation
+    if (typeof grecaptcha !== 'undefined') {
+      var recaptchaResponse = grecaptcha.getResponse();
+      if (!recaptchaResponse) {
+        alert('Por favor, confirme que voc\u00ea n\u00e3o \u00e9 um rob\u00f4.');
+        return;
+      }
+    }
+
     // Split date of birth into hidden fields (dd/mm/aaaa)
     var dobInput = document.getElementById('gform-dob');
     if (dobInput && dobInput.value) {
