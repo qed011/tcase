@@ -61,10 +61,20 @@ function applyDynamicLinks() {
 function initMobileNav() {
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('nav-menu');
+  const nav = document.querySelector('.header .container > nav');
 
   if (!toggle || !menu) return;
 
-  toggle.addEventListener('click', function () {
+  // Função auxiliar para fechar o menu
+  function closeMenu() {
+    menu.classList.remove('nav__list--open');
+    toggle.classList.remove('nav__toggle--active');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  // Abre/fecha ao clicar no botão
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
     const expanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!expanded));
     menu.classList.toggle('nav__list--open');
@@ -74,10 +84,28 @@ function initMobileNav() {
   // Fecha menu ao clicar num link
   menu.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function () {
-      menu.classList.remove('nav__list--open');
-      toggle.classList.remove('nav__toggle--active');
-      toggle.setAttribute('aria-expanded', 'false');
+      closeMenu();
     });
+  });
+
+  // Fecha menu ao clicar fora (no documento)
+  document.addEventListener('click', function (e) {
+    const isClickInsideNav = nav && nav.contains(e.target);
+    const isClickOnToggle = toggle && toggle.contains(e.target);
+    const isMenuOpen = menu.classList.contains('nav__list--open');
+
+    // Se clicou fora do nav e do botão, fecha o menu
+    if (isMenuOpen && !isClickInsideNav && !isClickOnToggle) {
+      closeMenu();
+    }
+  });
+
+  // Fecha menu ao pressionar ESC
+  document.addEventListener('keydown', function (e) {
+    const isMenuOpen = menu.classList.contains('nav__list--open');
+    if (isMenuOpen && e.key === 'Escape') {
+      closeMenu();
+    }
   });
 }
 
