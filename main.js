@@ -61,7 +61,7 @@ function applyDynamicLinks() {
 function initMobileNav() {
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('nav-menu');
-  const nav = document.querySelector('.header .container > nav');
+  const nav = document.querySelector('.nav');
 
   if (!toggle || !menu) return;
 

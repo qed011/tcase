@@ -1636,3 +1636,21 @@ ul, ol {
   font-weight: 600;
 }
 
+
+
+/* ===== FIXED NAV WRAPPER ===== */
+.nav {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  position: relative;
+}
+
+.header .container > nav {
+  position: static;
+}
+
+.nav__list {
+  top: calc(100% + 8px);
+  right: 0;
+}
