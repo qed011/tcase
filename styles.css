@@ -1,6 +1,6 @@
 /* ============================================
-   CSS  Justica para Santa Cruz
-   Landing page estatica  GitHub Pages
+   CSS — Justiça para Santa Cruz
+   Landing page estática · GitHub Pages
    ============================================ */
 
 /* ---------- Reset & Base ---------- */
@@ -32,7 +32,7 @@
   --font-heading: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
-  /* Espacamento */
+  /* Espaçamento */
   --section-padding: 5rem 1.5rem;
   --container-max: 1100px;
   --header-height: 72px;
@@ -75,7 +75,7 @@ ul, ol {
   list-style: none;
 }
 
-/* ---------- Utilitarios ---------- */
+/* ---------- Utilitários ---------- */
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -94,7 +94,7 @@ ul, ol {
   border: 0;
 }
 
-/* ---------- Botoes ---------- */
+/* ---------- Botões ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -199,6 +199,8 @@ ul, ol {
   gap: 1rem;
   padding-top: 0;
   padding-bottom: 0;
+
+  position: relative;
 }
 
 .header__logo {
@@ -219,17 +221,10 @@ ul, ol {
   opacity: 0.85;
 }
 
-/* Nav wrapper  anchor dropdown to the hamburger button */
-.header .container > nav {
-  position: relative;
-  justify-self: end;
-  align-self: center;
-}
-
-/* Navegacao  dropdown menu (always hamburger) */
+/* Navegação — dropdown menu (always hamburger) */
 .nav__list {
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   right: 0;
   width: 280px;
   max-height: 0;
@@ -265,7 +260,7 @@ ul, ol {
   color: var(--color-primary);
 }
 
-/* Header CTA  centered */
+/* Header CTA — centered */
 .header__cta {
   display: inline-flex;
   align-items: center;
@@ -293,7 +288,7 @@ ul, ol {
   box-shadow: 0 4px 12px rgba(27, 58, 75, 0.3);
 }
 
-/* Hamburger  always visible, right-aligned */
+/* Hamburger — always visible, right-aligned */
 .nav__toggle {
   display: flex;
   justify-self: end;
@@ -418,7 +413,7 @@ ul, ol {
 }
 
 /* ============================================
-   SECOES GENERICAS
+   SEÇÕES GENÉRICAS
    ============================================ */
 .section {
   padding: var(--section-padding);
@@ -482,7 +477,7 @@ ul, ol {
 }
 
 /* ============================================
-   CONTEXTO JURIDICO  CARDS
+   CONTEXTO JURÍDICO — CARDS
    ============================================ */
 .context__grid {
   display: grid;
@@ -545,14 +540,14 @@ ul, ol {
 }
 
 .eligibility__list li::before {
-  content: ' ';
+  content: '✓ ';
   color: var(--color-accent);
   font-weight: 700;
   position: static;
 }
 
 /* ============================================
-   CTA INTERMEDIARIO
+   CTA INTERMEDIÁRIO
    ============================================ */
 .cta-banner {
   background: linear-gradient(135deg, var(--color-primary) 0%, #264E63 100%);
@@ -581,7 +576,7 @@ ul, ol {
 }
 
 /* ============================================
-   FAQ  ACCORDION
+   FAQ — ACCORDION
    ============================================ */
 .faq__list {
   max-width: 800px;
@@ -620,7 +615,7 @@ ul, ol {
 }
 
 .faq__item[open] summary::after {
-  content: '';
+  content: '−';
 }
 
 .faq__answer {
@@ -744,7 +739,7 @@ ul, ol {
 }
 
 /* ============================================
-   BOTAO FLUTUANTE WHATSAPP
+   BOTÃO FLUTUANTE WHATSAPP
    ============================================ */
 .fab-whatsapp {
   position: fixed;
@@ -799,7 +794,7 @@ ul, ol {
 }
 
 /* ============================================
-   PAGINAS INTERNAS (privacy / thank-you)
+   PÁGINAS INTERNAS (privacy / thank-you)
    ============================================ */
 .page-content {
   padding: calc(var(--header-height) + 3rem) 1.5rem 4rem;
@@ -953,7 +948,7 @@ ul, ol {
 }
 
 /* ============================================
-   BOTAO GRANDE (btn--lg)
+   BOTÃO GRANDE (btn--lg)
    ============================================ */
 .btn--lg {
   padding: 1.1rem 2.5rem;
@@ -1383,7 +1378,7 @@ ul, ol {
     grid-template-columns: 1fr;
   }
 
-  /* Steps on mobile  vertical */
+  /* Steps on mobile — vertical */
   .steps__grid {
     flex-direction: column;
     align-items: center;
@@ -1395,12 +1390,12 @@ ul, ol {
     margin: 0.5rem 0;
   }
 
-  /* WhatsApp FAB  only icon on mobile, no floating bar */
+  /* WhatsApp FAB — only icon on mobile, no floating bar */
   .floating-cta {
     display: none !important;
   }
 
-  /* Footer  compact horizontal strip */
+  /* Footer — compact horizontal strip */
   .footer {
     padding: 1rem 1rem;
   }
@@ -1453,7 +1448,7 @@ ul, ol {
     grid-template-columns: 1fr;
   }
 
-  /* Header CTA mobile  smaller */
+  /* Header CTA mobile — smaller */
   .header__cta {
     font-size: 0.8rem;
     padding: 0.5rem 1.1rem;
@@ -1461,7 +1456,7 @@ ul, ol {
 }
 
 /* ============================================
-   GOOGLE FORMS  FORMULARIO CUSTOMIZADO
+   GOOGLE FORMS — FORMULÁRIO CUSTOMIZADO
    ============================================ */
 
 .gform {
@@ -1637,20 +1632,24 @@ ul, ol {
 }
 
 
-
-/* ===== FIXED NAV WRAPPER ===== */
-.nav {
+/* ============================================
+   FIX: NAV DROPDOWN ANCHORED TO HAMBURGER (DESKTOP)
+   ============================================ */
+.header .container > .nav {
   grid-column: 3;
   grid-row: 1;
   justify-self: end;
-  position: relative;
+  align-self: center;
+  position: relative; /* anchor for dropdown */
 }
 
-.header .container > nav {
+.header .container > .nav > nav {
   position: static;
 }
 
-.nav__list {
+/* ensure dropdown aligns with the hamburger */
+.header .container > .nav .nav__list {
   top: calc(100% + 8px);
   right: 0;
+  left: auto;
 }

@@ -90,12 +90,11 @@ function initMobileNav() {
 
   // Fecha menu ao clicar fora (no documento)
   document.addEventListener('click', function (e) {
-    const isClickInsideNav = nav && nav.contains(e.target);
-    const isClickOnToggle = toggle && toggle.contains(e.target);
     const isMenuOpen = menu.classList.contains('nav__list--open');
+    if (!isMenuOpen) return;
 
-    // Se clicou fora do nav e do botão, fecha o menu
-    if (isMenuOpen && !isClickInsideNav && !isClickOnToggle) {
+    // Se clicou fora do wrapper do menu e fora do botao, fecha
+    if (!e.target.closest('.nav')) {
       closeMenu();
     }
   });
