@@ -199,6 +199,8 @@ ul, ol {
   gap: 1rem;
   padding-top: 0;
   padding-bottom: 0;
+
+  position: relative;
 }
 
 .header__logo {
@@ -219,15 +221,10 @@ ul, ol {
   opacity: 0.85;
 }
 
-/* Nav wrapper — remove from grid flow */
-.header .container > nav {
-  position: absolute;
-}
-
 /* Navegação — dropdown menu (always hamburger) */
 .nav__list {
-  position: fixed;
-  top: var(--header-height);
+  position: absolute;
+  top: 100%;
   right: 0;
   width: 280px;
   max-height: 0;
@@ -1632,4 +1629,27 @@ ul, ol {
 .contact__channels a {
   color: var(--color-primary);
   font-weight: 600;
+}
+
+
+/* ============================================
+   FIX: NAV DROPDOWN ANCHORED TO HAMBURGER (DESKTOP)
+   ============================================ */
+.header .container > .nav {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  align-self: center;
+  position: relative; /* anchor for dropdown */
+}
+
+.header .container > .nav > nav {
+  position: static;
+}
+
+/* ensure dropdown aligns with the hamburger */
+.header .container > .nav .nav__list {
+  top: calc(100% + 8px);
+  right: 0;
+  left: auto;
 }

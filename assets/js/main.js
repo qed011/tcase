@@ -9,6 +9,14 @@ const CONFIG = {
   INSTAGRAM_URL: 'https://www.instagram.com/justicaparasantacruz', // Perfil do Instagram
   CONTACT_EMAIL: 'contato@justicaparasantacruz.com.br',       // E-mail de contato
   SITE_NAME: 'Justiça para Santa Cruz',
+
+  // URL do formulário — quando o Cloudflare Worker estiver pronto,
+  // troque para a URL do Worker (ex: 'https://seudominio.com/api/submit')
+  FORM_SUBMIT_URL: 'https://docs.google.com/forms/d/e/1FAIpQLSdwkSeelic6cnqWV9F5713VxSaah0yCPDiJEglo-QAYr0C4kg/formResponse',
+  FORM_SUBMIT_MODE: 'no-cors',  // trocar para 'cors' quando usar o Worker
+
+  // Anti-spam: intervalo mínimo entre envios (ms)
+  FORM_RATE_LIMIT_MS: 30000,    // 30 segundos
 };
 
 /* ============================================
@@ -53,10 +61,20 @@ function applyDynamicLinks() {
 function initMobileNav() {
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('nav-menu');
+  const nav = document.querySelector('.nav');
 
   if (!toggle || !menu) return;
 
-  toggle.addEventListener('click', function () {
+  // Função auxiliar para fechar o menu
+  function closeMenu() {
+    menu.classList.remove('nav__list--open');
+    toggle.classList.remove('nav__toggle--active');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  // Abre/fecha ao clicar no botão
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
     const expanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!expanded));
     menu.classList.toggle('nav__list--open');
@@ -66,10 +84,27 @@ function initMobileNav() {
   // Fecha menu ao clicar num link
   menu.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function () {
-      menu.classList.remove('nav__list--open');
-      toggle.classList.remove('nav__toggle--active');
-      toggle.setAttribute('aria-expanded', 'false');
+      closeMenu();
     });
+  });
+
+  // Fecha menu ao clicar fora (no documento)
+  document.addEventListener('click', function (e) {
+    const isMenuOpen = menu.classList.contains('nav__list--open');
+    if (!isMenuOpen) return;
+
+    // Se clicou fora do wrapper do menu e fora do botao, fecha
+    if (!e.target.closest('.nav')) {
+      closeMenu();
+    }
+  });
+
+  // Fecha menu ao pressionar ESC
+  document.addEventListener('keydown', function (e) {
+    const isMenuOpen = menu.classList.contains('nav__list--open');
+    if (isMenuOpen && e.key === 'Escape') {
+      closeMenu();
+    }
   });
 }
 
@@ -189,30 +224,35 @@ function initGoogleForm() {
       return;
     }
 
-    // reCAPTCHA validation
-    if (typeof grecaptcha !== 'undefined') {
-      var recaptchaResponse = grecaptcha.getResponse();
-      if (!recaptchaResponse) {
-        alert('Por favor, confirme que voc\u00ea n\u00e3o \u00e9 um rob\u00f4.');
-        return;
-      }
+    // reCAPTCHA validation (obrigatória — bloqueia envio se não carregou)
+    if (typeof grecaptcha === 'undefined' || !grecaptcha.getResponse()) {
+      alert('Por favor, confirme que você não é um robô.');
+      return;
     }
+    var recaptchaResponse = grecaptcha.getResponse();
 
     // Build FormData (exclude honeypot)
     var formData = new FormData(form);
     formData.delete('website');
 
+    // Rate limiting — impede reenvio rápido/automatizado
+    var now = Date.now();
+    if (window.__lastFormSubmit && (now - window.__lastFormSubmit) < CONFIG.FORM_RATE_LIMIT_MS) {
+      alert('Aguarde alguns segundos antes de enviar novamente.');
+      return;
+    }
+    window.__lastFormSubmit = now;
+
     // Show loading state
     var submitBtn = document.getElementById('gform-submit');
     submitBtn.textContent = 'Enviando…';
     submitBtn.classList.add('btn--loading');
+    submitBtn.disabled = true;
 
-    // Submit via fetch (no-cors)
-    var GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdwkSeelic6cnqWV9F5713VxSaah0yCPDiJEglo-QAYr0C4kg/formResponse';
-
-    fetch(GOOGLE_FORM_URL, {
+    // Submit via fetch
+    fetch(CONFIG.FORM_SUBMIT_URL, {
       method: 'POST',
-      mode: 'no-cors',
+      mode: CONFIG.FORM_SUBMIT_MODE,
       body: formData,
     })
     .then(function () {
