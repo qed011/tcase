@@ -738,6 +738,37 @@ ul, ol {
   line-height: 1.4;
 }
 
+.footer__partner {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.footer__partner-label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+  margin-bottom: 0.5rem;
+}
+
+.footer__partner-logo {
+  display: inline-block;
+  max-width: 120px;
+  height: auto;
+  margin-bottom: 0.35rem;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+.footer__partner-cnpj {
+  display: block;
+  font-size: 0.68rem;
+  opacity: 0.5;
+}
+
 /* ============================================
    BOTÃO FLUTUANTE WHATSAPP
    ============================================ */
