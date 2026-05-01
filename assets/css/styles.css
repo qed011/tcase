@@ -665,8 +665,8 @@ ul, ol {
 .footer {
   background-color: var(--color-bg-dark);
   color: rgba(255, 255, 255, 0.75);
-  padding: 1.5rem 1.5rem;
-  font-size: 0.85rem;
+  padding: 2rem 1.5rem;
+  font-size: 1rem;
 }
 
 .footer .container {
@@ -680,7 +680,7 @@ ul, ol {
 
 .footer__brand {
   font-family: var(--font-heading);
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--color-white);
 }
@@ -691,7 +691,7 @@ ul, ol {
 
 .footer__link {
   color: rgba(255, 255, 255, 0.75);
-  font-size: 0.85rem;
+  font-size: 1rem;
   transition: color var(--transition);
 }
 
@@ -709,8 +709,8 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--color-white);
@@ -723,10 +723,10 @@ ul, ol {
 
 .footer__bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 0.75rem;
-  margin-top: 0.75rem;
+  padding-top: 0.85rem;
+  margin-top: 0.85rem;
   text-align: center;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   line-height: 1.5;
 }
 
@@ -734,39 +734,28 @@ ul, ol {
   display: block;
   margin-bottom: 0.35rem;
   opacity: 0.55;
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   line-height: 1.4;
 }
 
 .footer__partner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem 0.6rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 1rem;
+  padding-top: 0.6rem;
   margin-top: 0.75rem;
-  text-align: center;
-}
-
-.footer__partner-label {
-  display: block;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.55;
-  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  opacity: 0.5;
 }
 
 .footer__partner-logo {
   display: inline-block;
-  max-width: 120px;
-  height: auto;
-  margin-bottom: 0.35rem;
+  height: 28px;
+  width: auto;
   filter: brightness(0) invert(1);
-  opacity: 0.85;
-}
-
-.footer__partner-cnpj {
-  display: block;
-  font-size: 0.68rem;
-  opacity: 0.5;
 }
 
 /* ============================================
@@ -1428,7 +1417,7 @@ ul, ol {
 
   /* Footer — compact horizontal strip */
   .footer {
-    padding: 1rem 1rem;
+    padding: 1.25rem 1rem;
   }
 
   .footer .container {
@@ -1436,11 +1425,11 @@ ul, ol {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.35rem 0.75rem;
-    font-size: 0.78rem;
+    font-size: 0.9rem;
   }
 
   .footer__brand {
-    font-size: 0.8rem;
+    font-size: 1rem;
     width: 100%;
     text-align: center;
     margin-bottom: 0.15rem;
@@ -1451,22 +1440,22 @@ ul, ol {
   }
 
   .footer__link {
-    font-size: 0.75rem;
+    font-size: 0.88rem;
   }
 
   .footer__social a {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
   }
 
   .footer__bottom {
-    font-size: 0.68rem;
-    padding-top: 0.5rem;
-    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    padding-top: 0.6rem;
+    margin-top: 0.6rem;
   }
 
   .footer__disclaimer {
-    font-size: 0.6rem;
+    font-size: 0.72rem;
   }
 
   .gform__row--2,

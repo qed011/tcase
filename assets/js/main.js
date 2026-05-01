@@ -224,12 +224,12 @@ function initGoogleForm() {
       return;
     }
 
-    // reCAPTCHA validation (obrigatória — bloqueia envio se não carregou)
-    if (typeof grecaptcha === 'undefined' || !grecaptcha.getResponse()) {
-      alert('Por favor, confirme que você não é um robô.');
-      return;
-    }
-    var recaptchaResponse = grecaptcha.getResponse();
+    // reCAPTCHA validation (desativado temporariamente)
+    // if (typeof grecaptcha === 'undefined' || !grecaptcha.getResponse()) {
+    //   alert('Por favor, confirme que você não é um robô.');
+    //   return;
+    // }
+    // var recaptchaResponse = grecaptcha.getResponse();
 
     // Build FormData (exclude honeypot)
     var formData = new FormData(form);
