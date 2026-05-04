@@ -7,6 +7,35 @@
   <meta name="theme-color" content="#1B3A4B">
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="landing-fixes-v6.css">
+
+<style>
+  body {
+    background: #f3f7fb !important;
+    color: #1b263b !important;
+  }
+
+  .thankyou {
+    background: #f3f7fb !important;
+    color: #1b263b !important;
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+
+  .thankyou h1,
+  .thankyou h2 {
+    color: #1b3e71 !important;
+  }
+
+  .thankyou__lead,
+  .thankyou__note,
+  .thankyou li {
+    color: #334155 !important;
+  }
+</style>
+
 </head>
 <body>
 
@@ -51,15 +80,17 @@
           <h2>Próximos passos</h2>
           <ol>
             <li>Nossa equipe vai analisar seus dados.</li>
-            <li>Entraremos em contato pelo <strong>WhatsApp</strong> em breve.</li>
+            <li>Você poderá continuar seu cadastro completo pelo portal.</li>
             <li>Você receberá orientações sobre como prosseguir na ação.</li>
           </ol>
         </div>
 
         <div class="thankyou__ctas">
-          <a href="index.html" class="btn btn--primary">Voltar ao início</a>
-          <a href="#" class="btn btn--whatsapp" data-link="whatsapp" target="_blank" rel="noopener noreferrer">
-            Falar no WhatsApp
+          <a href="https://portal-chuva-de-prata.vercel.app/register" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+            Continuar cadastro no portal
+          </a>
+          <a href="index.html" class="btn btn--outline">
+            Voltar ao início
           </a>
         </div>
 

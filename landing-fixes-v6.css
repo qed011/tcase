@@ -1,0 +1,204 @@
+/* landing-fixes-v6.css
+   Versão simplificada usando a imagem original: novo_banner.jpeg.
+   Carregue este arquivo depois do CSS original.
+*/
+
+/* Remove camadas/overlays por cima do banner */
+.hero::before,
+.hero::after,
+.hero .elementor-background-overlay,
+.elementor-background-overlay {
+  display: none !important;
+  content: none !important;
+  opacity: 0 !important;
+  background: transparent !important;
+}
+
+/* Se você estiver usando o index-v4 com <img class="hero__bg">,
+   escondemos essa imagem para voltar ao background padrão. */
+.hero__bg {
+  display: none !important;
+}
+
+/* Hero com imagem original */
+.hero {
+  position: relative !important;
+  min-height: calc(100vh - 72px) !important;
+  height: calc(100vh - 72px) !important;
+  overflow: hidden !important;
+
+  background-image: url("novo_banner.jpeg") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-color: #edf5ff !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* Conteúdo do hero */
+.hero__content {
+  width: min(100%, 980px) !important;
+  margin-inline: auto !important;
+  padding-inline: 24px !important;
+  position: relative !important;
+  z-index: 2 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* Botões */
+.hero__ctas {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex-wrap: wrap !important;
+}
+
+.hero .btn--outline {
+  background: #1b3e71 !important;
+  color: #ffffff !important;
+  border: 2px solid #1b3e71 !important;
+  text-shadow: none !important;
+  box-shadow: 0 6px 18px rgba(10, 30, 60, 0.18) !important;
+}
+
+.hero .btn--outline:hover,
+.hero .btn--outline:focus {
+  background: #12345f !important;
+  color: #ffffff !important;
+  border-color: #12345f !important;
+}
+
+/* Texto "Seus dados estão protegidos" */
+.hero__micro-trust {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin-top: 18px !important;
+  padding: 6px 12px !important;
+
+  color: #12345f !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  box-shadow: 0 4px 14px rgba(10, 30, 60, 0.12) !important;
+}
+
+.hero__micro-trust svg {
+  color: #0f9d58 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .hero {
+    min-height: calc(100vh - 64px) !important;
+    height: calc(100vh - 64px) !important;
+    background-position: center top !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 82vh !important;
+    height: 82vh !important;
+    background-position: center top !important;
+  }
+
+  .hero__content {
+    padding-inline: 16px !important;
+  }
+
+  .hero__ctas {
+    width: 100% !important;
+  }
+
+  .hero__ctas .btn {
+    width: 100% !important;
+    max-width: 320px !important;
+  }
+}
+
+/* =========================================================
+   Ajuste da seção "Quem Somos"
+   Objetivo: distribuir 5 cards de forma mais simétrica.
+   Desktop: 3 cards na primeira linha e 2 cards centralizados na segunda.
+   ========================================================= */
+
+.whoweare__grid {
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+  max-width: 980px !important;
+  margin: 0 auto !important;
+  align-items: stretch !important;
+}
+
+.whoweare__item {
+  grid-column: span 2 !important;
+  width: 100% !important;
+  min-height: 260px !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 32px 28px !important;
+}
+
+/* Centraliza a segunda linha: itens 4 e 5 */
+.whoweare__item:nth-child(4) {
+  grid-column: 2 / span 2 !important;
+}
+
+.whoweare__item:nth-child(5) {
+  grid-column: 4 / span 2 !important;
+}
+
+/* Tablets: 2 colunas equilibradas */
+@media (max-width: 900px) {
+  .whoweare__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    max-width: 720px !important;
+  }
+
+  .whoweare__item,
+  .whoweare__item:nth-child(4),
+  .whoweare__item:nth-child(5) {
+    grid-column: auto !important;
+  }
+
+  .whoweare__item:last-child {
+    grid-column: 1 / -1 !important;
+    max-width: 348px !important;
+    margin-inline: auto !important;
+  }
+}
+
+/* Celular: 1 coluna */
+@media (max-width: 600px) {
+  .whoweare__grid {
+    grid-template-columns: 1fr !important;
+    max-width: 360px !important;
+    gap: 18px !important;
+  }
+
+  .whoweare__item,
+  .whoweare__item:last-child {
+    grid-column: auto !important;
+    max-width: none !important;
+    min-height: auto !important;
+  }
+}

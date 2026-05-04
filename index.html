@@ -32,6 +32,7 @@
   ">
 
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="landing-fixes-v6.css">
   <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 </head>
 <body>
@@ -46,7 +47,7 @@
       </a>
 
       <div class="header__actions">
-        <a href="#" data-link="portal" class="header__portal" target="_blank" rel="noopener noreferrer">Acessar Portal</a>
+        <a href="https://portal-chuva-de-prata.vercel.app/register" class="header__portal" target="_blank" rel="noopener noreferrer">Acessar Portal</a>
         <a href="#contato" class="header__cta">Quero participar</a>
       </div>
 
@@ -69,7 +70,7 @@
           <li><a class="nav__link" href="#faq">Perguntas Frequentes</a></li>
           <li><a class="nav__link" href="#contato">Contato</a></li>
           <li><a class="nav__link" href="privacy.html">Privacidade</a></li>
-          <li><a class="nav__link nav__link--portal" href="#" data-link="portal" target="_blank" rel="noopener noreferrer">Acessar Portal ↗</a></li>
+          <li><a class="nav__link nav__link--portal" href="https://portal-chuva-de-prata.vercel.app/register" target="_blank" rel="noopener noreferrer">Acessar Portal ↗</a></li>
         </ul>
       </nav>
 
@@ -82,6 +83,7 @@
        B) HERO
        ============================================ -->
   <section class="hero" id="inicio">
+    <img src="novo_banner.jpeg" class="hero__bg" alt="" aria-hidden="true">
     <div class="hero__content">
       <div class="hero__ctas">
         <a href="#contato" class="btn btn--primary btn--lg">Quero participar</a>
@@ -421,7 +423,8 @@
         </div>
       </div>
 
-      <p class="section__lead" style="margin-top: 2rem; font-size: 0.95rem;">Nossa equipe estará sempre à disposição para tirar dúvidas e te acompanhar ao longo de todo o processo, seja por WhatsApp, e-mail ou pelo seu telefone de contato.</p>
+      <p class="section__lead" style="margin-top: 2rem; font-size: 0.95rem; text-align: center;">
+  Nossa equipe estará sempre à disposição para tirar dúvidas e te acompanhar ao longo de todo o processo, seja por WhatsApp, e-mail ou pelo seu telefone de contato.</p>
     </div>
   </section>
 
@@ -499,9 +502,7 @@
         </form>
 
         <div class="contact__channels">
-          <p class="contact__email">
-            Prefere falar por e-mail? <a href="#" data-link="email"><span class="email-text">(em breve)</span></a>
-          </p>
+
         </div>
       </div>
     </div>
