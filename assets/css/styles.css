@@ -14,8 +14,8 @@
 
 :root {
   /* Paleta principal */
-  --color-primary: #1B3A4B;       /* azul escuro institucional */
-  --color-primary-dark: #122936;
+  --color-primary: #1b3e71;       /* azul escuro institucional */
+  --color-primary-dark: #142d54;
   --color-accent: #25D366;        /* verde WhatsApp */
   --color-accent-hover: #1EBE57;
   --color-instagram: #E1306C;
@@ -24,7 +24,7 @@
   --color-text-light: #555555;
   --color-bg: #FFFFFF;
   --color-bg-alt: #F5F7FA;
-  --color-bg-dark: #1B3A4B;
+  --color-bg-dark: #1b3e71;
   --color-border: #E0E4E8;
   --color-white: #FFFFFF;
 
@@ -335,7 +335,7 @@ ul, ol {
   justify-content: center;
   text-align: center;
   padding: calc(var(--header-height) + 2rem) 1.5rem 2.5rem;
-  background: url('../img/ternium_image.png') center/cover no-repeat;
+  background: url('../img/novo_banner.jpeg') center/cover no-repeat;
   color: var(--color-white);
   overflow: visible;
 }
@@ -344,7 +344,7 @@ ul, ol {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(27, 58, 75, 0.78);
+  background: rgba(27, 62, 113, 0.78);
 }
 
 .hero__content {
@@ -550,7 +550,7 @@ ul, ol {
    CTA INTERMEDIÁRIO
    ============================================ */
 .cta-banner {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #264E63 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #2a5a8f 100%);
   color: var(--color-white);
   padding: 3.5rem 1.5rem;
   text-align: center;
@@ -1222,7 +1222,6 @@ ul, ol {
   font-weight: 700;
   color: var(--color-primary);
   margin-bottom: 0.5rem;
-  white-space: nowrap;
 }
 
 .step__text {
