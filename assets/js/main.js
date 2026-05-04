@@ -4,11 +4,11 @@
    ============================================ */
 
 const CONFIG = {
-  WHATSAPP_NUMBER: '',                                        // Número com DDI+DDD (sem +, espaços ou traços)
-  WHATSAPP_TEXT: 'Olá! Gostaria de saber mais sobre a ação coletiva Justiça para Santa Cruz.',
-  INSTAGRAM_URL: 'https://www.instagram.com/justicaparasantacruz', // Perfil do Instagram
-  CONTACT_EMAIL: 'contato@justicaparasantacruz.com.br',       // E-mail de contato
-  SITE_NAME: 'Justiça para Santa Cruz',
+  CONTACT_EMAIL: 'contato@casochuva.com.br',
+  SITE_NAME: 'Caso Chuva de Prata',
+
+  // URL do portal do cliente — atualizar quando o domínio de produção estiver definido
+  PORTAL_URL: 'https://portal.casochuva.com.br',
 
   // URL do formulário — quando o Cloudflare Worker estiver pronto,
   // troque para a URL do Worker (ex: 'https://seudominio.com/api/submit')
@@ -24,25 +24,12 @@ const CONFIG = {
    ============================================ */
 
 /**
- * Gera a URL completa do WhatsApp com texto pré-definido.
- */
-function getWhatsAppURL() {
-  const text = encodeURIComponent(CONFIG.WHATSAPP_TEXT);
-  return `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${text}`;
-}
-
-/**
  * Aplica os links dinâmicos a todos os elementos com data-attributes.
  */
 function applyDynamicLinks() {
-  // WhatsApp links
-  document.querySelectorAll('[data-link="whatsapp"]').forEach(function (el) {
-    el.href = getWhatsAppURL();
-  });
-
-  // Instagram links
-  document.querySelectorAll('[data-link="instagram"]').forEach(function (el) {
-    el.href = CONFIG.INSTAGRAM_URL;
+  // Portal links
+  document.querySelectorAll('[data-link="portal"]').forEach(function (el) {
+    el.href = CONFIG.PORTAL_URL;
   });
 
   // Email links
@@ -147,25 +134,6 @@ function initSmoothScroll() {
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
   });
-}
-
-/* ============================================
-   BOTÃO FLUTUANTE WHATSAPP
-   ============================================ */
-
-function initFloatingWhatsApp() {
-  const btn = document.getElementById('whatsapp-float');
-  if (!btn) return;
-
-  btn.href = getWhatsAppURL();
-
-  window.addEventListener('scroll', function () {
-    if (window.scrollY > 400) {
-      btn.classList.add('fab--visible');
-    } else {
-      btn.classList.remove('fab--visible');
-    }
-  }, { passive: true });
 }
 
 /* ============================================
@@ -367,7 +335,6 @@ document.addEventListener('DOMContentLoaded', function () {
   initMobileNav();
   initHeaderScroll();
   initSmoothScroll();
-  initFloatingWhatsApp();
   setCurrentYear();
   initGoogleForm();
   initSocialProofCounter();
