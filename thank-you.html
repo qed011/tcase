@@ -6,8 +6,14 @@
   <title>Obrigado! — Caso Chuva de Prata</title>
   <meta name="theme-color" content="#1B3A4B">
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="landing-fixes-v6.css">
+  <link rel="stylesheet" href="portal-coherence.css">
 
 <style>
   html,
@@ -179,6 +185,54 @@
   }
 </style>
 
+
+
+  <!-- Correção final: menu hamburger totalmente opaco -->
+  <style id="force-opaque-hamburger-menu">
+    .header .nav .nav__list,
+    .header .nav .nav__list.active,
+    .header .nav .nav__list.is-active,
+    .header .nav .nav__list.nav__list--open,
+    body .nav__list,
+    body .nav__list.active,
+    body .nav__list.is-active,
+    body .nav__list.nav__list--open {
+      background: #ffffff !important;
+      background-color: #ffffff !important;
+      background-image: none !important;
+      opacity: 1 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      filter: none !important;
+      mix-blend-mode: normal !important;
+    }
+
+    .header .nav .nav__list::before,
+    .header .nav .nav__list::after,
+    body .nav__list::before,
+    body .nav__list::after {
+      display: none !important;
+      content: none !important;
+      background: none !important;
+      opacity: 0 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+  
+
+    @media (min-width: 901px) {
+      .header .nav .nav__list,
+      .header .nav .nav__list.active,
+      .header .nav .nav__list.is-active,
+      .header .nav .nav__list.nav__list--open,
+      body .nav__list,
+      body .nav__list.active,
+      body .nav__list.is-active,
+      body .nav__list.nav__list--open {
+        top: calc(100% + 24px) !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -192,7 +246,7 @@
       </a>
 
       <!-- <div class="header__actions">
-        <a href="https://portal-chuva-de-prata.vercel.app/register" class="header__cta" target="_blank" rel="noopener noreferrer">
+        <a href="https://portal.casochuvadeprata.org/register" class="header__cta" target="_blank" rel="noopener noreferrer">
           Quero participar
         </a>
       </div> -->
@@ -216,7 +270,7 @@
           <li><a class="nav__link" href="index.html#faq">Perguntas Frequentes</a></li>
           <li><a class="nav__link" href="index.html#contato">Contato</a></li>
           <li><a class="nav__link" href="privacy.html">Privacidade</a></li>
-          <li><a class="nav__link nav__link--portal" href="https://portal-chuva-de-prata.vercel.app/register" target="_blank" rel="noopener noreferrer">Acessar Portal</a></li>
+          <li><a class="nav__link nav__link--portal" href="https://portal.casochuvadeprata.org/register" target="_blank" rel="noopener noreferrer">Acessar Portal</a></li>
         </ul>
       </nav>
 
@@ -245,7 +299,7 @@
         </div>
 
         <div class="thankyou__ctas">
-          <a href="https://portal-chuva-de-prata.vercel.app/register" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+          <a href="https://portal.casochuvadeprata.org/register" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
             Continuar cadastro no portal
           </a>
           <a href="index.html" class="btn btn--outline">
