@@ -202,3 +202,21 @@
     min-height: auto !important;
   }
 }
+
+/* ===== MENU HAMBURGER HOVER FIX ===== */
+
+.nav__link {
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  background: rgba(27, 62, 113, 0.08);
+  color: #1b3e71;
+}
+
+.nav__link--portal:hover {
+  background: rgba(27, 62, 113, 0.12);
+}
