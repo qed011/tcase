@@ -579,3 +579,30 @@
     padding: 5px 11px !important;
   }
 }
+
+/* =============================
+   AJUSTE V12 - GAP PADRÃO NO MENU HAMBURGER
+   ============================= */
+:root {
+  --nav-menu-gap: 25px;
+}
+
+@media (min-width: 901px) {
+  .nav__list {
+    top: calc(100% + var(--nav-menu-gap)) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav__list {
+    top: calc(72px + var(--nav-menu-gap)) !important;
+    max-height: calc(100svh - 72px - var(--nav-menu-gap) - 16px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav__list {
+    top: calc(64px + var(--nav-menu-gap)) !important;
+    max-height: calc(100svh - 64px - var(--nav-menu-gap) - 12px) !important;
+  }
+}
