@@ -1,5 +1,7 @@
-/* landing-fixes-v6.css
-   Versão simplificada usando a imagem original: novo_banner.jpeg.
+/* Ana Luíza Lasta Kodama
+   NUSP 14651204
+   landing-fixes-v6.css
+   Correções responsivas para banner, menu hamburger e seção "Quem Somos".
    Carregue este arquivo depois do CSS original.
 */
 
@@ -14,23 +16,19 @@
   background: transparent !important;
 }
 
-/* Se você estiver usando o index-v4 com <img class="hero__bg">,
-   escondemos essa imagem para voltar ao background padrão. */
-.hero__bg {
-  display: none !important;
-}
+/* =========================================================
+   HERO / BANNER
+   Usa a imagem como <img>, não como background fixo.
+   Isso evita corte severo em telas pequenas.
+   ========================================================= */
 
-/* Hero com imagem original */
 .hero {
   position: relative !important;
-  min-height: calc(100vh - 72px) !important;
-  height: calc(100vh - 72px) !important;
+  min-height: clamp(520px, calc(100svh - 72px), 820px) !important;
+  height: auto !important;
   overflow: hidden !important;
 
-  background-image: url("novo_banner.jpeg") !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-  background-position: center top !important;
+  background-image: none !important;
   background-color: #edf5ff !important;
 
   display: flex !important;
@@ -39,7 +37,19 @@
   text-align: center !important;
 }
 
-/* Conteúdo do hero */
+.hero__bg {
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
 .hero__content {
   width: min(100%, 980px) !important;
   margin-inline: auto !important;
@@ -54,7 +64,6 @@
   text-align: center !important;
 }
 
-/* Botões */
 .hero__ctas {
   display: flex !important;
   justify-content: center !important;
@@ -100,24 +109,33 @@
   flex-shrink: 0 !important;
 }
 
-/* Responsivo */
+/* Tablets */
 @media (max-width: 900px) {
   .hero {
-    min-height: calc(100vh - 64px) !important;
-    height: calc(100vh - 64px) !important;
-    background-position: center top !important;
+    min-height: clamp(500px, calc(100svh - 64px), 760px) !important;
+  }
+
+  .hero__bg {
+    object-position: center top !important;
   }
 }
 
+/* Celulares: prioriza mostrar a arte inteira do banner */
 @media (max-width: 600px) {
   .hero {
-    min-height: 82vh !important;
-    height: 82vh !important;
-    background-position: center top !important;
+    min-height: clamp(480px, 82svh, 680px) !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .hero__bg {
+    object-fit: contain !important;
+    object-position: center top !important;
   }
 
   .hero__content {
     padding-inline: 16px !important;
+    justify-content: center !important;
   }
 
   .hero__ctas {
@@ -131,9 +149,8 @@
 }
 
 /* =========================================================
-   Ajuste da seção "Quem Somos"
-   Objetivo: distribuir 5 cards de forma mais simétrica.
-   Desktop: 3 cards na primeira linha e 2 cards centralizados na segunda.
+   SEÇÃO "QUEM SOMOS"
+   Desktop: 3 cards na primeira linha e 2 centralizados na segunda.
    ========================================================= */
 
 .whoweare__grid {
@@ -158,7 +175,6 @@
   padding: 32px 28px !important;
 }
 
-/* Centraliza a segunda linha: itens 4 e 5 */
 .whoweare__item:nth-child(4) {
   grid-column: 2 / span 2 !important;
 }
@@ -167,7 +183,6 @@
   grid-column: 4 / span 2 !important;
 }
 
-/* Tablets: 2 colunas equilibradas */
 @media (max-width: 900px) {
   .whoweare__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -187,7 +202,6 @@
   }
 }
 
-/* Celular: 1 coluna */
 @media (max-width: 600px) {
   .whoweare__grid {
     grid-template-columns: 1fr !important;
@@ -203,85 +217,149 @@
   }
 }
 
-/* ===== MENU HAMBURGER HOVER FIX DEFINITIVO ===== */
+/* =========================================================
+   MENU HAMBURGER
+   Evita corte lateral no mobile e mantém dropdown legível.
+   ========================================================= */
+
+.header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+}
+
+.header .container {
+  position: relative !important;
+}
+
+.nav {
+  position: relative !important;
+  z-index: 1001 !important;
+}
+
+.nav__toggle {
+  position: relative !important;
+  z-index: 1003 !important;
+  flex-shrink: 0 !important;
+}
 
 .nav__list {
-  padding: 0.75rem !important;
+  box-sizing: border-box !important;
+  list-style: none !important;
   gap: 0 !important;
+  padding: 0.75rem !important;
+  margin: 0 !important;
+  z-index: 1002 !important;
 }
 
 .nav__list li {
   margin: 0 !important;
   padding: 0 !important;
-  width: 100%;
+  width: 100% !important;
 }
 
 .nav__list .nav__link {
   display: flex !important;
-  align-items: center;
+  align-items: center !important;
   width: 100% !important;
-  min-height: 48px;
+  min-height: 48px !important;
   padding: 0 1rem !important;
-  border-radius: 10px;
-  box-sizing: border-box;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 10px !important;
+  box-sizing: border-box !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease, color 0.2s ease !important;
 }
 
 .nav__list .nav__link:hover,
 .nav__list .nav__link:focus-visible {
-  background: rgba(27, 62, 113, 0.10);
-  color: #1b3e71;
+  background: rgba(27, 62, 113, 0.10) !important;
+  color: #1b3e71 !important;
 }
 
 .nav__list .nav__link--portal {
-  font-weight: 700;
+  margin-top: 0.5rem !important;
+  min-height: 52px !important;
+  justify-content: center !important;
+  border: 2px solid #1b3e71 !important;
+  border-radius: 14px !important;
+  background: #f3f7fb !important;
+  color: #1b3e71 !important;
+  font-weight: 800 !important;
 }
 
 .nav__list .nav__link--portal:hover,
 .nav__list .nav__link--portal:focus-visible {
-  background: rgba(27, 62, 113, 0.14);
+  background: #1b3e71 !important;
+  color: #ffffff !important;
+  border-color: #1b3e71 !important;
 }
 
-/* Esconde corretamente o menu hamburger quando fechado */
+/* Estado fechado */
 .nav__list:not(.active):not(.is-active):not(.nav__list--open) {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(-8px);
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(-8px) !important;
 }
 
-/* Mostra corretamente quando aberto */
+/* Estado aberto */
 .nav__list.active,
 .nav__list.is-active,
 .nav__list.nav__list--open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0);
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
 }
 
-/* Destaque do item Acessar Portal no menu hamburger */
-.nav__list .nav__link--portal {
-  margin-top: 0.5rem;
-  min-height: 52px;
-  justify-content: center;
-  border: 2px solid #1b3e71;
-  border-radius: 14px;
-  background: #f3f7fb;
-  color: #1b3e71;
-  font-weight: 800;
-  text-decoration: none;
+/* Desktop/tablet amplo */
+@media (min-width: 901px) {
+  .nav__list {
+    position: absolute !important;
+    top: calc(100% + 10px) !important;
+    right: 0 !important;
+    width: min(320px, calc(100vw - 32px)) !important;
+    max-height: calc(100svh - 88px) !important;
+    overflow-y: auto !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(27, 62, 113, 0.14) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 18px 40px rgba(10, 30, 60, 0.18) !important;
+  }
 }
 
-.nav__list .nav__link--portal:hover,
-.nav__list .nav__link--portal:focus-visible {
-  background: #1b3e71;
-  color: #ffffff;
-  border-color: #1b3e71;
+/* Mobile: dropdown centralizado na tela, sem corte lateral */
+@media (max-width: 900px) {
+  .nav__list {
+    position: fixed !important;
+    top: 72px !important;
+    left: 16px !important;
+    right: 16px !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: calc(100svh - 88px) !important;
+    overflow-y: auto !important;
+
+    background: #ffffff !important;
+    border: 1px solid rgba(27, 62, 113, 0.14) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 18px 40px rgba(10, 30, 60, 0.22) !important;
+  }
 }
 
-/* Alinha o dropdown do hamburger com a topbar */
-.nav__list {
-  top: 52px !important;
-  margin-top: 0 !important;
+@media (max-width: 480px) {
+  .header__cta {
+    max-width: 190px !important;
+    padding-inline: 16px !important;
+    white-space: nowrap !important;
+  }
+
+  .nav__list {
+    top: 64px !important;
+    left: 12px !important;
+    right: 12px !important;
+    max-height: calc(100svh - 76px) !important;
+  }
 }
