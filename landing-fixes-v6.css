@@ -697,3 +697,30 @@
     padding: 6px 6px !important;
   }
 }
+
+/* =============================
+   AJUSTE V15 - CTAs UM POUCO ACIMA DA BORDA INFERIOR
+   ============================= */
+@media (min-width: 901px) {
+  .hero__content {
+    bottom: clamp(22px, 3.4vh, 42px) !important;
+  }
+}
+
+@media (min-width: 901px) and (max-height: 760px) {
+  .hero__content {
+    bottom: 18px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero__content {
+    bottom: clamp(10px, 2.4vw, 18px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__content {
+    bottom: 10px !important;
+  }
+}
