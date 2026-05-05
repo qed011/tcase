@@ -24,11 +24,11 @@
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src  'self' https://www.google.com https://www.gstatic.com;
+    script-src  'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://connect.facebook.net;
     style-src   'self' 'unsafe-inline' https://fonts.googleapis.com;
     frame-src   https://www.google.com;
-    connect-src 'self' https://docs.google.com;
-    img-src     'self' data:;
+    connect-src 'self' https://docs.google.com https://www.facebook.com https://connect.facebook.net;
+    img-src     'self' data: https://www.facebook.com;
     font-src    'self' https://fonts.gstatic.com;
     form-action 'self' https://docs.google.com;
   ">
@@ -41,6 +41,31 @@
   <link rel="stylesheet" href="landing-fixes-v6.css">
   <link rel="stylesheet" href="portal-coherence.css">
   <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1709292457183622');
+    fbq('track', 'PageView');
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('a[href*="portal-chuva-de-prata.vercel.app/register"]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (typeof fbq === 'function') {
+            fbq('track', 'Lead');
+          }
+        });
+      });
+    });
+  </script>
+  <!-- End Meta Pixel Code -->
+
 
 
   <!-- Correção final: menu hamburger totalmente opaco -->
@@ -91,6 +116,13 @@
   </style>
 </head>
 <body>
+  <!-- Meta Pixel Code (noscript) -->
+  <noscript>
+    <img height="1" width="1" style="display:none" alt=""
+         src="https://www.facebook.com/tr?id=1709292457183622&ev=PageView&noscript=1">
+  </noscript>
+  <!-- End Meta Pixel Code (noscript) -->
+
 
   <!-- ============================================
        A) HEADER
