@@ -674,3 +674,26 @@
     height: 9px !important;
   }
 }
+
+/* =============================
+   AJUSTE V14 - REMOVE BADGE DE SEGURANÇA DO HERO
+   ============================= */
+.hero__micro-trust {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .hero__ctas .btn {
+    font-size: clamp(0.82rem, 3.2vw, 1rem) !important;
+    min-height: 34px !important;
+    padding: 7px 8px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero__ctas .btn {
+    font-size: clamp(0.74rem, 3vw, 0.92rem) !important;
+    min-height: 30px !important;
+    padding: 6px 6px !important;
+  }
+}
