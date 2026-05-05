@@ -25,17 +25,70 @@
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src  'self' https://www.google.com https://www.gstatic.com;
-    style-src   'self' 'unsafe-inline';
+    style-src   'self' 'unsafe-inline' https://fonts.googleapis.com;
     frame-src   https://www.google.com;
     connect-src 'self' https://docs.google.com;
     img-src     'self' data:;
-    font-src    'self';
+    font-src    'self' https://fonts.gstatic.com;
     form-action 'self' https://docs.google.com;
   ">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="landing-fixes-v6.css">
+  <link rel="stylesheet" href="portal-coherence.css">
   <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+
+
+  <!-- Correção final: menu hamburger totalmente opaco -->
+  <style id="force-opaque-hamburger-menu">
+    .header .nav .nav__list,
+    .header .nav .nav__list.active,
+    .header .nav .nav__list.is-active,
+    .header .nav .nav__list.nav__list--open,
+    body .nav__list,
+    body .nav__list.active,
+    body .nav__list.is-active,
+    body .nav__list.nav__list--open {
+      background: #ffffff !important;
+      background-color: #ffffff !important;
+      background-image: none !important;
+      opacity: 1 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      filter: none !important;
+      mix-blend-mode: normal !important;
+    }
+
+    .header .nav .nav__list::before,
+    .header .nav .nav__list::after,
+    body .nav__list::before,
+    body .nav__list::after {
+      display: none !important;
+      content: none !important;
+      background: none !important;
+      opacity: 0 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+  
+
+    @media (min-width: 901px) {
+      .header .nav .nav__list,
+      .header .nav .nav__list.active,
+      .header .nav .nav__list.is-active,
+      .header .nav .nav__list.nav__list--open,
+      body .nav__list,
+      body .nav__list.active,
+      body .nav__list.is-active,
+      body .nav__list.nav__list--open {
+        top: calc(100% + 24px) !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -387,14 +440,14 @@
         <p class="section__lead">É rápido, seguro e você não paga nada.</p>
       </div>
 
-      <div class="steps__grid">
-        <div class="step">
+      <div class="steps__grid" style="display: flex; align-items: stretch; gap: 1.5rem; flex-wrap: wrap;">
+        <div class="step" style="flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center;">
           <div class="step__number">1</div>
           <div class="step__icon">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
           </div>
-          <h3 class="step__title">Crie sua conta no portal</h3>
-          <p class="step__text">
+          <h3 class="step__title" style="min-height: 48px;">Crie sua conta no portal</h3>
+          <p class="step__text" style="flex-grow: 1;">
             Clique em “Quero participar” e crie sua conta gratuitamente com nome, e-mail e senha.
           </p>
         </div>
@@ -403,13 +456,13 @@
           <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h32M28 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
         </div>
 
-        <div class="step">
+        <div class="step" style="flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center;">
           <div class="step__number">2</div>
           <div class="step__icon">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
-          <h3 class="step__title">Complete seu perfil</h3>
-          <p class="step__text">
+          <h3 class="step__title" style="min-height: 48px;">Complete seu perfil</h3>
+          <p class="step__text" style="flex-grow: 1;">
             Depois de acessar o portal, preencha suas informações, envie os documentos solicitados e acompanhe o andamento do caso.
           </p>
         </div>
@@ -418,13 +471,13 @@
           <svg width="40" height="24" viewBox="0 0 40 24"><path d="M0 12h32M28 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
         </div>
 
-        <div class="step">
+        <div class="step" style="flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center;">
           <div class="step__number">3</div>
           <div class="step__icon">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
-          <h3 class="step__title">Aguarde a análise</h3>
-          <p class="step__text">
+          <h3 class="step__title" style="min-height: 48px;">Aguarde a análise</h3>
+          <p class="step__text" style="flex-grow: 1;">
             A equipe jurídica analisará seus dados e entrará em contato com orientações sobre os próximos passos.
           </p>
         </div>

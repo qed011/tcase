@@ -17,15 +17,20 @@
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src  'self' https://www.google.com https://www.gstatic.com;
-    style-src   'self' 'unsafe-inline';
+    style-src   'self' 'unsafe-inline' https://fonts.googleapis.com;
     frame-src   https://www.google.com;
     connect-src 'self' https://docs.google.com;
     img-src     'self' data:;
-    font-src    'self';
+    font-src    'self' https://fonts.gstatic.com;
     form-action 'self' https://docs.google.com;
   ">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="landing-fixes-v6.css">
+  <link rel="stylesheet" href="portal-coherence.css">
 
   <style>
     /* Privacy page layout alignment */
@@ -64,6 +69,54 @@
 
     .page-content .btn {
       margin-top: 1rem;
+    }
+  </style>
+
+
+  <!-- Correção final: menu hamburger totalmente opaco -->
+  <style id="force-opaque-hamburger-menu">
+    .header .nav .nav__list,
+    .header .nav .nav__list.active,
+    .header .nav .nav__list.is-active,
+    .header .nav .nav__list.nav__list--open,
+    body .nav__list,
+    body .nav__list.active,
+    body .nav__list.is-active,
+    body .nav__list.nav__list--open {
+      background: #ffffff !important;
+      background-color: #ffffff !important;
+      background-image: none !important;
+      opacity: 1 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      filter: none !important;
+      mix-blend-mode: normal !important;
+    }
+
+    .header .nav .nav__list::before,
+    .header .nav .nav__list::after,
+    body .nav__list::before,
+    body .nav__list::after {
+      display: none !important;
+      content: none !important;
+      background: none !important;
+      opacity: 0 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+  
+
+    @media (min-width: 901px) {
+      .header .nav .nav__list,
+      .header .nav .nav__list.active,
+      .header .nav .nav__list.is-active,
+      .header .nav .nav__list.nav__list--open,
+      body .nav__list,
+      body .nav__list.active,
+      body .nav__list.is-active,
+      body .nav__list.nav__list--open {
+        top: calc(100% + 24px) !important;
+      }
     }
   </style>
 </head>

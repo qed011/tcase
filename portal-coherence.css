@@ -1,0 +1,606 @@
+/* ============================================
+   PORTAL COHERENCE — Visual alignment with portal prototype
+   Loads AFTER styles.css and landing-fixes-v6.css
+   Only aesthetic changes — no content/layout alterations
+   ============================================ */
+
+/* ---------- Design tokens (portal-aligned) ---------- */
+:root {
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', sans-serif;
+  --font-heading: var(--font-inter);
+  --font-body: var(--font-inter);
+
+  --color-bg: #f8fafc;
+  --color-bg-alt: #f1f5f9;
+  --color-text: #0f172a;
+  --color-text-light: #64748b;
+  --color-border: rgba(15, 23, 42, 0.08);
+  --color-surface: #ffffff;
+
+  --radius: 1.5rem;
+  --radius-card: 2rem;
+  --radius-btn: 999px;
+  --radius-input: 1rem;
+
+  --transition: 0.18s cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-slow: 0.28s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-blur: blur(14px) saturate(150%);
+  --glass-shadow:
+    inset 0 0.5px 0 0 rgba(255, 255, 255, 0.32),
+    0 1px 4px rgba(15, 23, 42, 0.02),
+    0 4px 16px rgba(15, 23, 42, 0.03);
+
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.02), 0 4px 16px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover:
+    0 2px 6px rgba(15, 23, 42, 0.03),
+    0 8px 24px rgba(15, 23, 42, 0.05),
+    0 20px 52px -10px rgba(15, 23, 42, 0.06);
+}
+
+/* ---------- Base typography override ---------- */
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at top left, rgba(27, 62, 113, 0.07), transparent 28%),
+    radial-gradient(circle at top right, rgba(43, 90, 143, 0.07), transparent 24%),
+    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 35%, #e2e8f0 100%);
+  background-attachment: scroll;
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  body {
+    background-attachment: fixed;
+  }
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+}
+
+::selection {
+  background: rgba(27, 62, 113, 0.16);
+  color: var(--color-text);
+}
+
+/* ---------- Links ---------- */
+a {
+  transition: color var(--transition), opacity var(--transition);
+}
+
+/* ---------- Buttons — pill shape with Apple feedback ---------- */
+.btn {
+  font-family: var(--font-body);
+  border-radius: var(--radius-btn) !important;
+  transition:
+    background-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition),
+    opacity var(--transition);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.97) !important;
+}
+
+.btn--primary {
+  box-shadow: 0 1px 3px rgba(27, 62, 113, 0.12), 0 4px 12px rgba(27, 62, 113, 0.08);
+}
+
+.btn--primary:hover {
+  box-shadow: 0 4px 14px rgba(27, 62, 113, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn--outline {
+  border-radius: var(--radius-btn) !important;
+  border-width: 1.5px;
+  backdrop-filter: blur(8px);
+}
+
+/* ---------- Header — glass morphism ---------- */
+.header {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border-bottom: 1px solid var(--color-border);
+  transition: box-shadow var(--transition), background-color var(--transition);
+}
+
+.header--scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+.header__logo img {
+  border-radius: 12px;
+}
+
+.header__cta {
+  font-family: var(--font-body);
+  border-radius: var(--radius-btn);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  box-shadow: 0 1px 3px rgba(27, 62, 113, 0.1);
+  transition:
+    background-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.header__cta:hover {
+  box-shadow: 0 4px 14px rgba(27, 62, 113, 0.2);
+}
+
+.header__cta:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Navigation dropdown — opaque card ---------- */
+.nav__list {
+  border-radius: var(--radius-card) !important;
+  border: 1px solid var(--color-border) !important;
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: var(--glass-shadow), 0 18px 40px rgba(15, 23, 42, 0.12) !important;
+  transition: opacity 0.22s ease, visibility 0.22s ease, transform 0.22s ease, max-height 0.35s ease;
+}
+
+.nav__link {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border-radius: 0.75rem !important;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.nav__link:hover {
+  background-color: rgba(27, 62, 113, 0.06);
+}
+
+.nav__link--portal {
+  border-radius: 1rem !important;
+  font-weight: 700;
+}
+
+/* ---------- Sections — refined spacing and backgrounds ---------- */
+.section {
+  background-color: transparent;
+}
+
+.section--alt {
+  background-color: rgba(241, 245, 249, 0.6);
+}
+
+.section__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.section__lead {
+  color: var(--color-text-light);
+  letter-spacing: -0.01em;
+}
+
+/* ---------- About section ---------- */
+.about__text p {
+  color: var(--color-text);
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+}
+
+.about__highlight {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-primary);
+  border-radius: var(--radius-card);
+  box-shadow: var(--glass-shadow);
+  padding: 2rem 2.5rem;
+}
+
+/* ---------- Quem Somos — glass cards ---------- */
+.whoweare__item {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.whoweare__item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.whoweare__icon {
+  border-radius: 1.25rem;
+  background: rgba(27, 62, 113, 0.08);
+}
+
+.whoweare__item p {
+  color: var(--color-text-light);
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Context cards — glass cards ---------- */
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 2.25rem;
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card__title {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.card__text {
+  color: var(--color-text-light);
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Eligibility list ---------- */
+.eligibility__list {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 2rem 2.5rem;
+}
+
+.eligibility__list li {
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+/* ---------- CTA Banner — refined gradient with glass ---------- */
+.cta-banner {
+  background:
+    linear-gradient(135deg, rgba(27, 62, 113, 0.95) 0%, rgba(42, 90, 143, 0.95) 100%);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cta-banner__title {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.cta-banner .btn {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.cta-banner .btn:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- FAQ — refined accordion ---------- */
+.faq__list {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 0.5rem 2rem;
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq__item:last-child {
+  border-bottom: none;
+}
+
+.faq__item summary {
+  font-family: var(--font-heading);
+  letter-spacing: -0.015em;
+  transition: color var(--transition);
+}
+
+.faq__item summary:hover {
+  color: var(--color-primary);
+}
+
+.faq__item summary::after {
+  color: var(--color-primary);
+  opacity: 0.5;
+  transition: opacity var(--transition);
+}
+
+.faq__item summary:hover::after {
+  opacity: 1;
+}
+
+.faq__answer {
+  color: var(--color-text-light);
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Steps / Como funciona ---------- */
+.how-it-works {
+  background-color: rgba(241, 245, 249, 0.6);
+}
+
+.step {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 2rem 1.5rem;
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.step:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.step__number {
+  background: var(--color-primary);
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(27, 62, 113, 0.2);
+}
+
+.step__title {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.step__text {
+  color: var(--color-text-light);
+  letter-spacing: -0.01em;
+}
+
+.step__connector {
+  color: var(--color-text-light);
+  opacity: 0.3;
+}
+
+/* ---------- Footer — polished dark section ---------- */
+.footer {
+  background: linear-gradient(180deg, #0f172a 0%, #0a1120 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer__brand {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.footer__link {
+  transition: color var(--transition), opacity var(--transition);
+  letter-spacing: -0.01em;
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer__partner {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- Floating CTA bar ---------- */
+.floating-cta {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -2px 16px rgba(15, 23, 42, 0.08);
+}
+
+.floating-cta__btn {
+  font-family: var(--font-body);
+  border-radius: var(--radius-btn);
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Apple-style active feedback (global) ---------- */
+button:active:not(:disabled),
+a:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Page content (privacy, thank-you) ---------- */
+.page-content h1,
+.page-content h2 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+}
+
+.page-content p,
+.page-content li {
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Form inputs (if re-enabled) ---------- */
+.gform__group input {
+  border-radius: var(--radius-input);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-body);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.gform__group input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(27, 62, 113, 0.08);
+}
+
+.gform__fieldset {
+  border-radius: var(--radius);
+  border-color: var(--color-border);
+}
+
+/* ---------- Mobile: disable backdrop-filter for performance ---------- */
+@media (max-width: 1024px), (pointer: coarse) {
+  .header,
+  .whoweare__item,
+  .card,
+  .faq__list,
+  .step,
+  .eligibility__list,
+  .about__highlight,
+  .floating-cta,
+  .nav__list {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .header {
+    background: rgba(255, 255, 255, 0.96);
+  }
+
+  .whoweare__item,
+  .card,
+  .step {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .faq__list,
+  .eligibility__list,
+  .about__highlight {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .nav__list {
+    background: #ffffff !important;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  button:active:not(:disabled),
+  a:active,
+  .card:hover,
+  .whoweare__item:hover,
+  .step:hover {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   CORREÇÃO FORÇADA: MENU HAMBURGER TOTALMENTE OPACO
+   Deve ficar no FINAL deste arquivo para sobrescrever qualquer efeito glass/transparência.
+   ========================================================= */
+.header .nav .nav__list,
+.header .nav .nav__list.active,
+.header .nav .nav__list.is-active,
+.header .nav .nav__list.nav__list--open,
+body .nav__list,
+body .nav__list.active,
+body .nav__list.is-active,
+body .nav__list.nav__list--open {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  isolation: isolate !important;
+}
+
+.header .nav .nav__list::before,
+.header .nav .nav__list::after,
+body .nav__list::before,
+body .nav__list::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+  opacity: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+
+/* =========================================================
+   CORREÇÃO FINAL: MENU HAMBURGER TOTALMENTE OPACO
+   ========================================================= */
+.header .nav .nav__list,
+.header .nav .nav__list.active,
+.header .nav .nav__list.is-active,
+.header .nav .nav__list.nav__list--open,
+body .nav__list,
+body .nav__list.active,
+body .nav__list.is-active,
+body .nav__list.nav__list--open {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+.header .nav .nav__list::before,
+.header .nav .nav__list::after,
+body .nav__list::before,
+body .nav__list::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+  opacity: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+
+/* =========================================================
+   AJUSTE FINAL: GAP DO MENU HAMBURGER NO DESKTOP
+   Mantém o menu opaco e cria o mesmo respiro visual abaixo da top bar.
+   ========================================================= */
+@media (min-width: 901px) {
+  .header .nav .nav__list,
+  .header .nav .nav__list.active,
+  .header .nav .nav__list.is-active,
+  .header .nav .nav__list.nav__list--open,
+  body .nav__list,
+  body .nav__list.active,
+  body .nav__list.is-active,
+  body .nav__list.nav__list--open {
+    top: calc(100% + 24px) !important;
+  }
+}
