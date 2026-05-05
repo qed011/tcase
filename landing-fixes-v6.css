@@ -203,20 +203,85 @@
   }
 }
 
-/* ===== MENU HAMBURGER HOVER FIX ===== */
+/* ===== MENU HAMBURGER HOVER FIX DEFINITIVO ===== */
 
-.nav__link {
-  border-radius: 8px;
-  padding: 0.5rem 0.75rem;
-  transition: all 0.2s ease;
+.nav__list {
+  padding: 0.75rem !important;
+  gap: 0 !important;
 }
 
-.nav__link:hover,
-.nav__link:focus-visible {
-  background: rgba(27, 62, 113, 0.08);
+.nav__list li {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+}
+
+.nav__list .nav__link {
+  display: flex !important;
+  align-items: center;
+  width: 100% !important;
+  min-height: 48px;
+  padding: 0 1rem !important;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav__list .nav__link:hover,
+.nav__list .nav__link:focus-visible {
+  background: rgba(27, 62, 113, 0.10);
   color: #1b3e71;
 }
 
-.nav__link--portal:hover {
-  background: rgba(27, 62, 113, 0.12);
+.nav__list .nav__link--portal {
+  font-weight: 700;
+}
+
+.nav__list .nav__link--portal:hover,
+.nav__list .nav__link--portal:focus-visible {
+  background: rgba(27, 62, 113, 0.14);
+}
+
+/* Esconde corretamente o menu hamburger quando fechado */
+.nav__list:not(.active):not(.is-active):not(.nav__list--open) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+}
+
+/* Mostra corretamente quando aberto */
+.nav__list.active,
+.nav__list.is-active,
+.nav__list.nav__list--open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Destaque do item Acessar Portal no menu hamburger */
+.nav__list .nav__link--portal {
+  margin-top: 0.5rem;
+  min-height: 52px;
+  justify-content: center;
+  border: 2px solid #1b3e71;
+  border-radius: 14px;
+  background: #f3f7fb;
+  color: #1b3e71;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.nav__list .nav__link--portal:hover,
+.nav__list .nav__link--portal:focus-visible {
+  background: #1b3e71;
+  color: #ffffff;
+  border-color: #1b3e71;
+}
+
+/* Alinha o dropdown do hamburger com a topbar */
+.nav__list {
+  top: 52px !important;
+  margin-top: 0 !important;
 }
